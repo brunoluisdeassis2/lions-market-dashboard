@@ -298,7 +298,11 @@ Teste: `npm run dev` e acesse http://localhost:3000/api/health (crie uma rota si
       user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
       items: { type: [orderItemSchema], required: true },
       total: { type: Number, required: true },
-      status: { type: String, enum: ["PENDENTE","PAGO","CANCELADO","FINALIZADO"], default: "PENDENTE" },
+      status: {
+        type: String,
+        enum: ["PENDENTE", "PAGO", "CANCELADO", "FINALIZADO"],
+        default: "PENDENTE",
+      },
     }, { timestamps: true });
 
 ### Passo 3 — Autenticação com JWT
@@ -344,7 +348,8 @@ Login: busque o usuário com `.select("+password")`, compare com bcrypt e respon
 ### Passo 4 — Produtos com filtros, ordenação e paginação
 
     export async function list(req, res) {
-      const { search, category, availability, sort = "name", page = 1, limit = 10 } = req.query;
+      const { search, category, availability } = req.query;
+      const { sort = "name", page = 1, limit = 10 } = req.query;
       const filter = {};
 
       if (search) filter.$or = [
@@ -352,9 +357,15 @@ Login: busque o usuário com `.select("+password")`, compare com bcrypt e respon
         { description: { $regex: search, $options: "i" } },
       ];
       if (category) filter.category = category;
-      if (availability === "available")   { filter.active = true;  filter.stock = { $gt: 0 }; }
-      if (availability === "unavailable") { filter.active = true;  filter.stock = { $lte: 0 }; }
-      if (availability === "inactive")    { filter.active = false; }
+      if (availability === "available") {
+        filter.active = true;  filter.stock = { $gt: 0 };
+      }
+      if (availability === "unavailable") {
+        filter.active = true;  filter.stock = { $lte: 0 };
+      }
+      if (availability === "inactive") {
+        filter.active = false;
+      }
 
       const pageNum  = Math.max(1, Number(page));
       const limitNum = Math.min(100, Math.max(1, Number(limit)));
