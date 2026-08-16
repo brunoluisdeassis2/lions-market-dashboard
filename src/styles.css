@@ -142,3 +142,431 @@
     color: var(--color-foreground);
   }
 }
+
+/* =====================================================================
+ * ESTILOS DO SISTEMA LIONS MARKET
+ *
+ * Visual proposital: sistema administrativo simples. Fundo claro, cinza,
+ * preto e UMA cor de destaque discreta (azul escuro). Sem gradientes,
+ * sem sombras exageradas e sem animações.
+ *
+ * Todas as cores ficam concentradas nestas variáveis para facilitar ajustes.
+ * ===================================================================== */
+:root {
+  --lm-fundo: #f5f5f5;
+  --lm-branco: #ffffff;
+  --lm-borda: #d4d4d4;
+  --lm-texto: #1f1f1f;
+  --lm-texto-fraco: #595959;
+  --lm-destaque: #1f4e79;
+  --lm-destaque-escuro: #163a5a;
+  --lm-erro: #a12b2b;
+  --lm-sucesso: #1f6b3a;
+}
+
+body {
+  background-color: var(--lm-fundo);
+  color: var(--lm-texto);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 20px;
+}
+h2 {
+  font-size: 17px;
+}
+h3 {
+  font-size: 15px;
+}
+
+/* ---------- Estrutura: sidebar + conteúdo ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  background-color: var(--lm-branco);
+  border-right: 1px solid var(--lm-borda);
+  padding: 16px 0;
+}
+
+.sidebar-brand {
+  font-weight: bold;
+  padding: 0 16px 16px;
+  border-bottom: 1px solid var(--lm-borda);
+}
+
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.sidebar a {
+  display: block;
+  padding: 8px 16px;
+  color: var(--lm-texto);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  background-color: #ececec;
+}
+
+.sidebar a.active {
+  background-color: #e6ecf2;
+  border-left: 3px solid var(--lm-destaque);
+  font-weight: bold;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  background-color: var(--lm-branco);
+  border-bottom: 1px solid var(--lm-borda);
+  padding: 10px 16px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag {
+  border: 1px solid var(--lm-borda);
+  padding: 1px 6px;
+  font-size: 12px;
+  color: var(--lm-texto-fraco);
+}
+
+.app-content {
+  padding: 20px 16px 40px;
+  max-width: 1100px;
+}
+
+.page-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  margin: 20px 0 8px;
+}
+
+/* ---------- Botões ---------- */
+.btn {
+  display: inline-block;
+  border: 1px solid var(--lm-borda);
+  background-color: var(--lm-branco);
+  color: var(--lm-texto);
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background-color: var(--lm-destaque);
+  border-color: var(--lm-destaque);
+  color: #ffffff;
+}
+
+.btn-primary:hover:enabled {
+  background-color: var(--lm-destaque-escuro);
+}
+
+.btn-danger {
+  color: var(--lm-erro);
+  border-color: var(--lm-erro);
+}
+
+.btn-sm {
+  padding: 3px 8px;
+  font-size: 13px;
+}
+
+/* Foco visível para acessibilidade */
+.btn:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--lm-destaque);
+  outline-offset: 1px;
+}
+
+/* ---------- Formulários ---------- */
+.form-field {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field-inline {
+  flex-direction: row;
+  align-items: center;
+}
+
+.form-field label {
+  font-size: 13px;
+  color: var(--lm-texto-fraco);
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea,
+select {
+  border: 1px solid var(--lm-borda);
+  background-color: var(--lm-branco);
+  padding: 6px 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.form-field-inline input {
+  width: auto;
+}
+
+.field-error {
+  color: var(--lm-erro);
+  font-size: 12px;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.form-box {
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+  padding: 16px;
+  max-width: 480px;
+}
+
+.inline-form {
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+  padding: 16px;
+  margin-top: 16px;
+  max-width: 320px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+/* ---------- Tabelas ---------- */
+.table-wrapper {
+  overflow-x: auto;
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--lm-branco);
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid var(--lm-borda);
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table thead th {
+  background-color: #efefef;
+  font-size: 13px;
+}
+
+.table-details {
+  border: 1px solid var(--lm-borda);
+  max-width: 600px;
+}
+
+.table-details th {
+  width: 160px;
+  background-color: #f7f7f7;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.total-line {
+  margin-top: 12px;
+}
+
+/* ---------- Cards do dashboard ---------- */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.card {
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+  padding: 12px 16px;
+  min-width: 170px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-label {
+  font-size: 12px;
+  color: var(--lm-texto-fraco);
+}
+
+.card-value {
+  font-size: 22px;
+}
+
+/* ---------- Mensagens de estado ---------- */
+.state-message {
+  color: var(--lm-texto-fraco);
+  margin: 12px 0;
+}
+
+.alert {
+  border: 1px solid var(--lm-borda);
+  padding: 8px 12px;
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.alert-error {
+  border-color: var(--lm-erro);
+  color: var(--lm-erro);
+  background-color: #fbf0f0;
+}
+
+.alert-success {
+  border-color: var(--lm-sucesso);
+  color: var(--lm-sucesso);
+  background-color: #f0f7f2;
+}
+
+/* ---------- Telas de login e cadastro ---------- */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.auth-box {
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+}
+
+.auth-subtitle {
+  color: var(--lm-texto-fraco);
+  margin: 4px 0 16px;
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+.modal {
+  background-color: var(--lm-branco);
+  border: 1px solid var(--lm-borda);
+  width: 100%;
+  max-width: 560px;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--lm-borda);
+  padding: 10px 16px;
+}
+
+.modal-body {
+  padding: 16px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* ---------- Responsividade simples (prioridade é o desktop) ---------- */
+@media (max-width: 760px) {
+  .app-shell {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--lm-borda);
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filters {
+    flex-direction: column;
+  }
+}
