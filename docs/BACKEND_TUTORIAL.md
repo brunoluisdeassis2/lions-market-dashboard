@@ -105,7 +105,13 @@ Objeto `order`:
       "_id": "665f...",
       "user": { "_id": "...", "name": "Maria", "email": "maria@email.com" },
       "items": [
-        { "product": "665f...", "name": "Teclado mecânico", "unitPrice": 349.9, "quantity": 2, "subtotal": 699.8 }
+        {
+          "product": "665f...",
+          "name": "Teclado mecânico",
+          "unitPrice": 349.9,
+          "quantity": 2,
+          "subtotal": 699.8
+        }
       ],
       "itemsCount": 1,
       "total": 699.8,
