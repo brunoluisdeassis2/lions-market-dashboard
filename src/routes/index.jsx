@@ -39,7 +39,7 @@ function Index() {
 
     if (!autenticado) {
       navigate({ to: "/login", replace: true });
-few    } else if (ehAdmin) {
+    } else if (ehAdmin) {
       navigate({ to: "/dashboard", replace: true });
     } else {
       navigate({ to: "/produtos", replace: true });
