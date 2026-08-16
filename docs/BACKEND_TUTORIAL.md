@@ -476,9 +476,9 @@ Este é exatamente o login que faltava para você explorar as telas.
 
         VITE_API_URL=http://localhost:3000/api
 
-3. Reinicie o servidor de desenvolvimento do frontend (variáveis Vite só são lidas na inicialização).
-4. No backend, garanta que `CORS_ORIGIN` inclui a origem do frontend (ex.: http://localhost:8080).
-5. Acesse /login e entre com `admin@lions.com` / `Admin@123`.
+- 3. Reinicie o servidor de desenvolvimento do frontend (variáveis Vite só são lidas na inicialização).
+- 4. No backend, garanta que `CORS_ORIGIN` inclui a origem do frontend (ex.: http://localhost:8080).
+- 5. Acesse /login e entre com `admin@lions.com` / `Admin@123`.
 
 Checklist de integração:
 
