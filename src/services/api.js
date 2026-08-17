@@ -10,10 +10,13 @@ import { getToken, clearSession } from "../utils/storage";
  * concentrados em um só lugar, e nenhum componente precisa conhecer
  * o endereço do servidor.
  *
- * A URL vem da variável de ambiente VITE_API_URL (ver .env.example).
- * Se ela não estiver definida, usamos o padrão de desenvolvimento.
+ * A URL vem da variável de ambiente VITE_API_URL (ver .env / .env.example).
+ * Se ela não estiver definida, usamos a API já publicada como padrão.
+ * Nenhum segredo do backend (MONGO_URI, JWT_SECRET) existe aqui: o frontend
+ * conhece apenas a URL pública e o token JWT do usuário logado.
  */
-const baseURL = import.meta.env.VITE_API_URL || "http://localhost:3000/api";
+const baseURL =
+  import.meta.env.VITE_API_URL || "https://lions-market-api.onrender.com/api";
 
 const api = axios.create({
   baseURL,
